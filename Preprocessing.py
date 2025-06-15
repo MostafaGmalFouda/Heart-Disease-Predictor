@@ -26,6 +26,7 @@ def app():
     df = load_data()
     if df.empty:
         st.stop()
+       
     df1 = df.copy()
 
     #Display DataFrame feature Types
