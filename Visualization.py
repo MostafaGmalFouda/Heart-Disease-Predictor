@@ -9,19 +9,18 @@ import io
 import os
 def app():
     def load_data():
-        current_dir = os.path.dirname(_file_)
-        file_path = os.path.join(current_dir, "heart.csv")
-
-        try:
-            df = pd.read_csv(file_path, encoding='utf-8', on_bad_lines='skip')
-            return df
-        except FileNotFoundError:
-            st.error("❌ File 'heart.csv' not found. Please make sure it's uploaded to GitHub in the same folder as app.py")
-            return pd.DataFrame()
-        except pd.errors.ParserError as e:
-            st.error("❌ An error occurred while reading the file.")
-            st.text(str(e))
-            return pd.DataFrame()
+    current_dir = os.path.dirname(__file__)  
+    file_path = os.path.join(current_dir, "heart.csv")
+    try:
+        df = pd.read_csv(file_path, encoding='utf-8', on_bad_lines='skip')
+        return df
+    except FileNotFoundError:
+        st.error("❌ File 'heart.csv' not found. Please make sure it's uploaded to GitHub in the same folder as app.py")
+        return pd.DataFrame()
+    except pd.errors.ParserError as e:
+        st.error("❌ An error occurred while reading the file.")
+        st.text(str(e))
+        return pd.DataFrame()
 
     df = load_data()
     if df.empty:
