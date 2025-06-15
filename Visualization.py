@@ -89,7 +89,7 @@ def app():
 
 
     st.subheader("Choose the type of visualization you want to perform")
-    numiric_cols = df[['Age', 'RestingBP', 'Cholesterol', 'FastingBS', 'MaxHR', 'Oldpeak']].columns.tolist()
+    numiric_cols = df[['Age', 'RestingBP', 'Cholesterol', 'MaxHR', 'Oldpeak']].columns.tolist()
     tab1, tab2, tab3, tab4 = st.tabs(["scatter plot", "histogram", "box plot", "line plot"])
     with tab1:
         col1, col2, col3 = st.columns(3)
