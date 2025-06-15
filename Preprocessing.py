@@ -8,10 +8,10 @@ import io
 import os
 
 def app():
-    def load_data():
-        current_dir = os.path.dirname(_file_)
+   def load_data():
+        current_dir = os.getcwd()  
         file_path = os.path.join(current_dir, "heart.csv")
-
+        
         try:
             df = pd.read_csv(file_path, encoding='utf-8', on_bad_lines='skip')
             return df
