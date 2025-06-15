@@ -17,7 +17,7 @@ def app():
 
     # --- Image Frame ---
     try:
-        image = Image.open(r"D:\Gemy Study\Programming\Projects\Faculty\Machine learning\Project\Heart.webp")  
+        image = Image.open(r"https://github.com/MostafaGmalFouda/Heart-Disease-Predictor/blob/main/Heart.webp")  
         st.image(image, caption="Heart Disease by AI", use_container_width=True)
     except FileNotFoundError:
         st.warning("Image 'Heart.webp' not found. Please place the image in the same directory or update the path.")
