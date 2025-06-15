@@ -8,9 +8,8 @@ import plotly.express as px
 import io 
 def app():
     # --- Load Data ---
-    path = r"https://github.com/MostafaGmalFouda/Heart-Disease-Predictor/blob/main/heart.csv"
     try:
-        df = pd.read_csv(path)
+        df = pd.read_csv("heart.csv")
     except FileNotFoundError:
         st.error(f"File not found at: {path}. Please check the file path.")
         return 
