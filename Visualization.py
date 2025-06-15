@@ -6,13 +6,24 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import plotly.express as px
 import io 
+import os
 def app():
-    # --- Load Data ---
+  def load_data():
+    current_dir = os.path.dirname(__file__)
+    file_path = os.path.join(current_dir, "heart.csv")
+
     try:
-        df = pd.read_csv("heart.csv")
+        df = pd.read_csv(file_path)
+        return df
     except FileNotFoundError:
-        st.error(f"File not found at: {path}. Please check the file path.")
-        return 
+        import streamlit as st
+        st.error("❌ File 'heart.csv' not found. Please make sure it's uploaded to GitHub in the same folder as app.py")
+        return pd.DataFrame()
+    except pd.errors.ParserError as e:
+        st.error("❌ An error occurred while reading the file.")
+        st.text(str(e))
+        return pd.DataFrame()
+
    
     st.subheader("Original Data Overview")
     num_rows = st.slider("Select number of rows to display:", min_value=5, max_value=len(df), value=10, step=5)
