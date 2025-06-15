@@ -24,6 +24,9 @@ def app():
         st.text(str(e))
         return pd.DataFrame()
 
+    df = load_data()
+    if df.empty:
+        st.stop()
    
     st.subheader("Original Data Overview")
     num_rows = st.slider("Select number of rows to display:", min_value=5, max_value=len(df), value=10, step=5)
